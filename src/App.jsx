@@ -1,4 +1,7 @@
+/* eslint no-eval: 0 */
 import React, { useState } from 'react';
+import words from 'lodash.words';
+import Footer from './components/Footer';
 import Functions from './components/Functions';
 import MathOperations from './components/MathOperations';
 import Numbers from './components/Numbers';
@@ -8,27 +11,34 @@ import './App.css';
 
 const App = () => {
     const [stack, setStack] = useState("");
+    const items = words(stack, /[^-^+^*^/]+/g); // usamos expresion regular para no mostrar
+    // simbolos en la calculadora   
 
-    console.log('Renderizado del componente App');
+    const value = items.length > 0 ? items[items.length - 1] : "0";
+
     return (
-        <main className="react-calculator">
-            <Result value={stack} />
-            <Numbers onClickNumber={number => {
-                console.log("Click en el numero", number)
-                setStack(number)
-            }} />
-            <Functions
-                onContentClear={() => console.log("Content Clear...")}
-                onDelete={() => console.log("onDelete....")}
-            />
-            <MathOperations
-                onClickOperation={operation =>
-                    console.log("Operation:", operation)
-                }
-                onClickEqual={equal =>
-                    console.log("Equals:", equal)
-                } />
-        </main>
+        <>
+            <main className="react-calculator">
+                <Result value={value} />
+                <Numbers onClickNumber={number => { setStack(`${stack}${number}`) }} />
+                <Functions
+                    onContentClear={() => { setStack(''); }}
+                    onDelete={() => {
+                        if (stack.length > 0) {
+                            const newStack = stack.substring(0, stack.length - 1);
+                            setStack(newStack);
+                        }
+                    }}
+                />
+                <MathOperations
+                    onClickOperation={operation => { setStack(`${stack}${operation}`); }}
+                    onClickEqual={equal => { setStack(eval(stack).toString()); }}
+                />
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </>
     );
 };
 

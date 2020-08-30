@@ -1,10 +1,9 @@
 html, body {
     position: relative;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to bottom right, #7a5cff 0%, #3cd644 100%);
+    background-image: linear-gradient(to bottom right, #000000 0%, #920000 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    margin: 0px;
 }
 
 body {
@@ -16,25 +15,28 @@ body {
     position: relative;
     margin: 0 auto;
     width: 320px;
-    background-color: #292f36;
-    box-shadow: 0 19px 38px rgba(19, 19, 19, 0.24), 0 15px 12px rgba(19, 19, 19, 0.12);
+    background-color: #181414;
+    /* box-shadow: 0px 0px 5px rgba(245, 238, 238, 10.24); */
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: inset 0 0 10px 0px rgb(136, 130, 113);
 }
 
 button {
     outline: none;
-    border: 0;
+    /* border: 0; */
     padding: 16px;
     font-size: 20px;
     line-height: 1;
     background-color: transparent;
-    color: #ffce5c;
+    color: blue;
     transition: all 300ms;
     border: 1px solid #0001;
 }
 
 button:hover {
-    color: #00a3f5;
-    border: 1px solid #ffce5c22;
+    color: hotpink;
+    border: 0.1px solid rgb(61, 61, 61);
+    cursor: pointer;
 }
 
 .result {
@@ -43,25 +45,27 @@ button:hover {
     height: 80px;
     padding: 8px;
     overflow: hidden;
-    background-color: rgba(19, 19, 19, 0.64);
+    background-color: rgba(0, 0, 0, 0.64);
     font-size: 32px;
     line-height: 2;
-    color: #60d63c;
+    color: #ff0000;
     text-align: right;
     direction: rtl;
     white-space: nowrap;
     box-sizing: border-box;
+    border-radius: 10px 10px 0 0;
+    box-shadow: inset 0 0 10px 0px rgb(136, 130, 113);
 }
 
 .functions button, .math-operations button {
     display: inline-block;
     width: 80px;
     height: 80px;
-    color: #d63c6b;
+    color: goldenrod;
 }
 
 .functions button:hover, .math-operations button:hover {
-    color: #b696a0;
+    color: rgb(154, 255, 2);
 }
 
 .numbers {
@@ -84,4 +88,18 @@ button:hover {
 .functions {
     float: left;
     width: 240px;
+}
+
+.title {
+    margin-top: 50px;
+    text-align: center;
+    border: 0.5px solid #920000;
+    box-shadow: inset 0 0 15px 10px rgb(136, 130, 113);
+    background: black;
+}
+
+.title>p {
+    font-size: 50px;
+    color: gold;
+    font-family: fantasy;
 }
